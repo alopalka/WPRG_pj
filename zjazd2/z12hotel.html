@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Formularz rezerwacji hotelu</title>
+</head>
+<body>
+<h2>Formularz rezerwacji hotelu</h2>
+<form action="z12otel_action.php" method="post">
+    <label for="people">Ilość osób:</label>
+    <select name="people" id="people" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+
+    <label for="name">Imię i nazwisko:</label>
+    <input type="text" name="name" id="name" required><br>
+
+    <label for="address">Adres:</label>
+    <input type="text" name="address" id="address" required><br>
+
+    <label for="credit-card">Numer karty kredytowej:</label>
+    <input type="text" name="credit-card" id="credit-card" required><br>
+
+    <label for="email">Adres e-mail:</label>
+    <input type="email" name="email" id="email" required><br>
+
+    <label for="date">Data pobytu:</label>
+    <input type="date" name="date" id="date" required><br>
+
+    <label for="time">Godzina przyjazdu:</label>
+    <input type="time" name="time" id="time" required><br>
+
+    <input type="submit" value="Zarezerwuj">
+</form>
+</body>
+</html>
