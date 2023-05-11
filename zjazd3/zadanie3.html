@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 3</title>
+</head>
+
+<body>
+    <div style="text-align:center; margin-top: 20px;">
+        <h1>Lista odnośników</h1>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF"]); ?>">
+            <input type="submit" name="show_links" value="Wyświetl listę odnośników"
+                style="padding: 10px; font-size: 20px;">
+        </form>
+    </div>
+    <div style="margin-top: 30px; text-align: center;">
+        <?php
+        if(isset($_POST["show_links"])) {
+            $file = "./list.txt";
+            if(!is_file($file)){
+                exit("File does not exist");
+            }
+
+            if(!$fileDescriptor = fopen($file, "r")){
+                exit("Can not open the file");
+            }
+
+            $numberOfLines = count(file($file));
+            while($numberOfLines > 0){
+                $line = fgets($fileDescriptor);
+                $data = explode(";", $line);
+                echo "<a href='$data[0]' style='font-size: 18px;'>$data[1]</a><br>";
+                $numberOfLines--;
+            }
+
+            fclose($fileDescriptor);
+        }
+        ?>
+    </div>
+</body>
+
+</html>
