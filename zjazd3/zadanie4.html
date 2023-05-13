@@ -9,22 +9,17 @@
 
 <body>
     <?php
-    // Define the IP addresses that should be redirected to a special page
     $redirectedIps = [
         "192.168.1.1",
         "10.0.0.2",
         "172.16.0.4"
     ];
     
-    // Get the user's IP address
     $userIp = $_SERVER['REMOTE_ADDR'];
 
-    // Check if the user's IP address is in the array of redirected IPs
     if (in_array($userIp, $redirectedIps)) {
-        // If so, include the special page
         include('special_page.php');
     } else {
-        // Otherwise, show the default page
         echo "<h1>Welcome to our website!</h1>";
         echo "<p>Your IP address is $userIp.</p>";
     }

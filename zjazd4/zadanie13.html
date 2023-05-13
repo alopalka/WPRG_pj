@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 13</title>
+</head>
+
+
+<body>
+    <h2>General Information</h2>
+    <p><strong>Card Number:</strong>
+        <?php echo $_SESSION['cardNumber']; ?>
+    </p>
+    <p><strong>Name:</strong>
+        <?php echo $_SESSION['name']; ?>
+    </p>
+    <p><strong>Number of People:</strong>
+        <?php echo $_SESSION['numberOfPeople']; ?>
+    </p>
+
+    <h2>People Details</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+        for ($i = 1; $i <= $_SESSION['numberOfPeople']; $i++) {
+          echo "<tr>";
+          echo "<td>" . $_SESSION["name$i"] . "</td>";
+          echo "<td>" . $_SESSION["age$i"] . "</td>";
+          echo "</tr>";
+        }
+        ?>
+        </tbody>
+    </table>
+</body>
+
+</html>

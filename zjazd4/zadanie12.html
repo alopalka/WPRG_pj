@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 12</title>
+</head>
+
+
+<body>
+    <form method="post" action="page3.php">
+        <?php
+      $numberOfPeople = $_SESSION['numberOfPeople'];
+      for ($i = 1; $i <= $numberOfPeople; $i++) {
+        echo "<h2>Person $i</h2>";
+        echo "<label for='name$i'>Name:</label>";
+        echo "<input type='text' id='name$i' name='name$i'>";
+        echo "<label for='age$i'>Age:</label>";
+        echo "<input type='text' id='age$i' name='age$i'>";
+      }
+      ?>
+
+        <input type="submit" name="saveData" value="Save Data">
+        <input type="submit" name="summary" value="Summary">
+    </form>
+</body>
+
+</html>
+
+<?php
+session_start();
+
+if (isset($_POST['saveData'])) {
+  for ($i = 1; $i <= $_SESSION['numberOfPeople']; $i++) {
+    $_SESSION["name$i"] = $_POST["name$i"];
+    $_SESSION["age$i"] = $_POST["age$i"];
+  }
+}
+
+if (isset($_POST['summary'])) {
+  header('Location: page3.php');
+  exit;
+}
+?>

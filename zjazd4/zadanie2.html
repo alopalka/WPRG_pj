@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 2</title>
+</head>
+
+<body>
+    <h1>Welcome to My Website</h1>
+    <p>Thanks for visiting!</p>
+
+    <?php
+		setcookie('visits', time());
+
+		if (isset($_COOKIE['visits'])) {
+		  $now = time();
+		  $lastVisit = $_COOKIE['visits'];
+		  $elapsedTime = $now - $lastVisit;
+
+		  if ($elapsedTime > 86400) {
+		    if (isset($_COOKIE['visitCount'])) {
+		      $visitCount = $_COOKIE['visitCount'] + 1;
+		    } else {
+		      $visitCount = 1;
+		    }
+
+		    setcookie('visitCount', $visitCount);
+
+		    if ($visitCount >= 5) {
+		      echo "<p>You have visited this site $visitCount times. Thank you for your continued support!</p>";
+		    }
+		  }
+		}
+	?>
+
+</body>
+
+</html>

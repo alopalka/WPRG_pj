@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Zadanie 3</title>
+</head>
+
+<body>
+	<h1>Welcome to My Website</h1>
+	<p>Thanks for visiting!</p>
+
+	<?php
+	session_start();
+
+	if (!isset($_SESSION['count'])) {
+	$_SESSION['count'] = 0;`
+	}
+
+	if (!isset($_COOKIE['last_visit'])) {
+	setcookie('last_visit', time(), time()+3600*24*365);
+	setcookie('visit_count', 1, time()+3600*24*365);
+	} else {
+	$last_visit = $_COOKIE['last_visit'];
+	$current_time = time();
+
+	if (($current_time - $last_visit) > 86400) {
+		$visit_count = $_COOKIE['visit_count'] + 1;
+		setcookie('last_visit', time(), time()+3600*24*365);
+		setcookie('visit_count', $visit_count, time()+3600*24*365);
+	}
+	}
+
+	$visit_count = $_COOKIE['visit_count'];
+	?>
+
+
+</body>
+
+</html>
